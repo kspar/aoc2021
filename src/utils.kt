@@ -5,9 +5,13 @@ import java.security.MessageDigest
 /**
  * Reads lines from the given input txt file.
  */
-fun readInput(name: String) = File("src", "$name.txt").readLines()
+fun readInput(name: String) = File("inputs", "$name.txt").readLines()
 
 /**
  * Converts string to md5 hash.
  */
 fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray())).toString(16)
+
+
+const val LOG_DEBUG = true
+fun debug(msgProducer: () -> Any?) = if (LOG_DEBUG) println(msgProducer()) else Unit
